@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import logSlice from "./logSlice";
 import postSlice from "./postSlice";
@@ -24,10 +24,10 @@ import { configureStore } from "@reduxjs/toolkit";
 // });
 
 const store = configureStore({
-    reducer:{
-      logstate:logSlice,
-      postData:postSlice
-    }
-})
+  reducer: {
+    logstate: logSlice,
+    postData: postSlice,
+  },
+});
 
-export default store
+export default store;

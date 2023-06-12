@@ -17,7 +17,7 @@ export default NextAuth({
         //api call
         if (username === "sowmya" && password === "12345") {
           // Return the user object if the credentials are valid
-          return Promise.resolve({ id: 1, name: 'sowmya'});
+          return Promise.resolve({ id: 1, name: "sowmya" });
         } else {
           // Return null if the credentials are invalid
           return Promise.resolve(null);
@@ -30,7 +30,7 @@ export default NextAuth({
   },
   pages: {
     signIn: "/login",
-    signOut:'/login'
+    signOut: "/login",
   },
 
   // callbacks: {

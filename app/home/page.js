@@ -13,13 +13,14 @@ import TableRow from "@mui/material/TableRow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import Link from "next/link";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';import { useRouter } from "next/navigation";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { storeData } from "@/store/postSlice";
 import { useSelector } from "react-redux";
@@ -29,7 +30,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [deleteId , setDeleteId] = useState([]);
+  const [deleteId, setDeleteId] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,11 +42,12 @@ const HomePage = () => {
   // const fromStoreData = useSelector((state) => state.postData.postdata);
   // console.log("from store data", fromStoreData);
 
-
   useEffect(() => {
     const getData = async () => {
       try {
-        let maindata = (await axios("https://jsonplaceholder.typicode.com/posts")).data
+        let maindata = (
+          await axios("https://jsonplaceholder.typicode.com/posts")
+        ).data;
         // let maindata = await jsondata.json();
         console.log(maindata, "data");
         maindata.forEach((element) => {
@@ -99,48 +101,49 @@ const HomePage = () => {
   const onEditClick = (id) => {
     console.log(id, "idedit");
     router.push(`home/edit/${id}`);
-
   };
 
   const onDeleteClick = (id) => {
-    setOpen(true)
-   setDeleteId([id])
+    setOpen(true);
+    setDeleteId([id]);
   };
-  const confirmDelete = () =>{
-    const resp = axios.delete(`https://jsonplaceholder.typicode.com/posts/${deleteId[0]}`)
-    setDeleteId([])
-    handleClose()
-  }
+  const confirmDelete = () => {
+    const resp = axios.delete(
+      `https://jsonplaceholder.typicode.com/posts/${deleteId[0]}`
+    );
+    setDeleteId([]);
+    handleClose();
+  };
 
   return (
     <div>
       <Link href="/home/add/new">
-       <Button variant="contained"> Add post</Button>
+        <Button variant="contained"> Add post</Button>
       </Link>
-    <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-           Are you sure do you want to delete it ?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={confirmDelete} autoFocus>
-            Yes
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  
+      <div>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Use Google's location service?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure do you want to delete it ?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>No</Button>
+            <Button onClick={confirmDelete} autoFocus>
+              Yes
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer sx={{ maxHeight: 600 }}>
           <Table stickyHeader aria-label="sticky table">

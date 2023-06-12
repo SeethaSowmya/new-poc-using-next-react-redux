@@ -2,14 +2,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateLogState } from "@/store/logSlice";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";

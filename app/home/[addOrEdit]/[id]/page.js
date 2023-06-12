@@ -21,7 +21,9 @@ const EditPost = () => {
     let inputErr =
       action.value == undefined
         ? ""
-        : typeof(action.value) === 'number' ? false:action.value.trim().length > 0
+        : typeof action.value === "number"
+        ? false
+        : action.value.trim().length > 0
         ? false
         : true;
     let copystate = [...state];
@@ -78,7 +80,7 @@ const EditPost = () => {
   const [state, dispatcher] = useReducer(reducer, initialData);
 
   const onChangeItem = (event, id) => {
-      dispatcher({ type: id, value: event.target.value });
+    dispatcher({ type: id, value: event.target.value });
   };
   const storedData = useSelector((state) => state.postData.postdata);
   console.log(storedData, "storedData");
@@ -96,7 +98,7 @@ const EditPost = () => {
       console.log(maindata, "gggggggggggggggg");
       dispatcher({ type: "update", maindata });
     };
-    if(pathname.split("/")[2]!=='add'){
+    if (pathname.split("/")[2] !== "add") {
       getPostData();
     }
   }, []);
